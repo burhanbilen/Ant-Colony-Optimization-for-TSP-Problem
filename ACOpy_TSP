@@ -9,6 +9,11 @@ problem = tsplib95.load('berlin52.tsp')
 G = problem.get_graph()
 tour = solver.solve(G, colony, limit=450)
 
+print(tour.cost)
+print(tour.get_id())
+print(tour.nodes)
+print(tour.path)
+
 df = pd.read_csv("berlin52.csv")
 X = df.iloc[:,0:1].values
 Y = df.iloc[:,1:2].values
@@ -20,11 +25,6 @@ plt.plot([X[len(X)-1][0],X[0][0]], [Y[len(Y)-1][0],Y[0][0]],"black")
 plt.xlabel("X Axis")
 plt.ylabel("Y Axis")
 plt.show()
-
-print(tour.cost)
-print(tour.get_id())
-print(tour.nodes)
-print(tour.path)
 
 X_new = []
 Y_new = []
